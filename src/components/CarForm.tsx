@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../hooks/reduxHooks';
-import { addCar } from '../store/garageSlice';
+import { addCarAsync } from '../store/garageSlice';
+
 
 const CarForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -11,13 +12,12 @@ const CarForm: React.FC = () => {
     e.preventDefault();
     if (!name.trim()) return;
 
-    const newCar = {
-      id: Date.now(),
-      name,
-      color,
-    };
-
-    dispatch(addCar(newCar));
+    dispatch(
+      addCarAsync({
+        name,
+        color,
+      })
+    );
 
     setName('');
     setColor('#000000');
