@@ -60,4 +60,4 @@ const Garage: React.FC = () => {
 };
 
 export default Garage;
-export {};
+

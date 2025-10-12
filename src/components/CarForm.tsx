@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { addCar } from '../store/garageSlice';
-import { CarFormProps } from '../types/carForm';
-import { Car } from '../types/car';
 
-const CarForm: React.FC<Partial<CarFormProps>> = ({
-  buttonLabel = 'Create',
-  initialName = '',
-  initialColor = '#000000',
-}) => {
+const CarForm: React.FC = () => {
   const dispatch = useAppDispatch();
-  const [name, setName] = useState(initialName);
-  const [color, setColor] = useState(initialColor);
+  const [name, setName] = useState('');
+  const [color, setColor] = useState('#000000');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
 
-    const newCar: Car = {
+    const newCar = {
       id: Date.now(),
       name,
       color,
@@ -51,7 +45,7 @@ const CarForm: React.FC<Partial<CarFormProps>> = ({
         type="submit"
         className="bg-blue-600 text-white px-3 py-1 rounded"
       >
-        {buttonLabel}
+        Create
       </button>
     </form>
   );
