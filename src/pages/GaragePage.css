@@ -1,0 +1,101 @@
+.garage-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: left;          
+    margin-bottom: 40px;
+    margin-left: 60px;         
+    color: #e0f7ff;
+  }  
+  
+  .garage-glow {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow:
+      0 0 8px #00ffff,
+      0 0 16px #00ffff,
+      0 0 24px #00cccc;
+    animation: pulseGlow 3s ease-in-out infinite alternate;
+  }
+    
+  @keyframes pulseGlow {
+    from {
+      text-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff, 0 0 24px #00cccc;
+    }
+    to {
+      text-shadow: 0 0 12px #66ffff, 0 0 24px #66ffff, 0 0 40px #00ffff;
+    }
+  }
+  
+  .controls-wrapper {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .race-card {
+    margin: 10px;
+    margin-left: 50px;
+    background: #3a3939;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .race-track {
+    position: relative;
+    background: linear-gradient(to right, #3a3939, #c6c2c2);
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+    
+  .start-line,
+  .finish-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: repeating-linear-gradient(
+      white,
+      white 5px,
+      black 5px,
+      black 10px
+    );
+    z-index: 2;
+  }
+  
+  .start-line {
+    left: 0;
+  }
+  .finish-line {
+    right: 50px;
+  }
+  
+  .car {
+    width: 100px;
+    height: 30px;
+    border: solid rgb(55, 54, 54);
+    border-radius: 8px;
+    color: #282626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    position: relative;
+    z-index: 3;
+    transition: transform 0.5s;
+  }
+    
+  .car.moving {
+    filter: drop-shadow(0px 4px 6px rgba(255, 255, 255, 0.4));
+  }
+  
+  body {
+    background: radial-gradient(circle at top left, #262525, rgb(120, 120, 159));
+  }
+
+ 

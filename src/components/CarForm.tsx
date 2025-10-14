@@ -1,52 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Input, Button, Space } from 'antd';
 import { useAppDispatch } from '../hooks/reduxHooks';
-import { addCarAsync } from '../store/garageSlice';
+import { addCarAsync, updateCarAsync } from '../store/garageSlice';
+import { CarFormProps} from '../types/carForm';
 
-
-const CarForm: React.FC = () => {
+const CarForm: React.FC<CarFormProps> = ({ editingCar, onFinishEdit }) => {
   const dispatch = useAppDispatch();
   const [name, setName] = useState('');
   const [color, setColor] = useState('#000000');
+
+  useEffect(() => {
+    if (editingCar) {
+      setName(editingCar.name);
+      setColor(editingCar.color);
+    }
+  }, [editingCar]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
 
-    dispatch(
-      addCarAsync({
-        name,
-        color,
-      })
-    );
-
+    if (editingCar) {
+      dispatch(updateCarAsync({ id: editingCar.id, car: { name, color } }));
+      onFinishEdit?.();
+    } else {
+      dispatch(addCarAsync({ name, color }));
+    }
     setName('');
     setColor('#000000');
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-wrap gap-2 items-center mb-4"
-    >
-      <input
-        type="text"
-        value={name}
-        placeholder="Car name"
-        onChange={(e) => setName(e.target.value)}
-        className="border p-1 rounded"
-      />
-      <input
-        type="color"
-        value={color}
-        onChange={(e) => setColor(e.target.value)}
-        className="w-10 h-10 cursor-pointer"
-      />
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-3 py-1 rounded"
-      >
-        Create
-      </button>
+    <form onSubmit={handleSubmit} className="flex flex-wrap gap-2 items-center mb-4">
+      <Space>
+        <Input
+          type="text"
+          value={name}
+          placeholder="Car name"
+          onChange={(e) => setName(e.target.value)}
+          style={{ width: 200 }}
+        />
+        <input
+          type="color"
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+          style={{ width: 40, height: 40 }}
+        />
+        <Button type="primary" htmlType="submit">
+          {editingCar ? 'Save' : 'Create'}
+        </Button>
+      </Space>
     </form>
   );
 };

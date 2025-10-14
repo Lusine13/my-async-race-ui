@@ -1,5 +1,6 @@
 import React from 'react';
 import { PaginationProps } from '../types/pagination';
+import './Pagination.css'; 
 
 const Pagination: React.FC<PaginationProps> = ({
   currentPage,
@@ -7,21 +8,23 @@ const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
 }) => {
   return (
-    <div className="flex gap-2 mt-4">
+    <div className="pagination-wrapper">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+        className="pagination-btn"
       >
         Prev
       </button>
-      <span>
+
+      <span className="pagination-info">
         Page {currentPage} / {totalPages}
       </span>
+
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 bg-gray-300 rounded disabled:opacity-50"
+        className="pagination-btn"
       >
         Next
       </button>

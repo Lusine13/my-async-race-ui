@@ -1,6 +1,7 @@
+import { Car } from '../types/car';
+
 export interface CarFormProps {
-    onSubmit: (name: string, color: string) => void;
-    buttonLabel?: string;
-    initialName?: string;
-    initialColor?: string;
+    editingCar?: Car | null;
+    onFinishEdit?: () => void;
   }
+  
