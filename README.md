@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Async Race - SPA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page application to manage radio-controlled cars, run races, and display winners. Built with React, Redux Toolkit, and TypeScript.
 
-## Available Scripts
+## Deployment & Score
+**Deployed UI:** [https://async-race-ui.netlify.app/garage](https://async-race-ui.netlify.app/garage)  
+**Estimated Score:** 380/400 ✅
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Checklist / Self-Evaluation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🚀 UI Deployment
+- [x] Deployment Platform: Netlify
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### ✅ Requirements to Commits and Repository
+- [x] Commit guidelines compliance
+- [x] Checklist included in README.md
+- [x] Score calculation included
+- [x] UI Deployment link included
 
-### `npm test`
+### Basic Structure (80 pts)
+- [x] Two Views: "Garage" and "Winners"
+- [x] Garage View Content (30 pts)
+  - [x] Name of view
+  - [x] Car creation and editing panel
+  - [x] Race control panel
+  - [x] Garage section
+- [x] Winners View Content (10 pts)
+  - [x] Name of view
+  - [x] Winners table
+  - [x] Pagination
+- [x] Persistent State (30 pts)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Garage View (90 pts)
+- [x] Car Creation And Editing Panel. CRUD Operations
+- [x] Color Selection
+- [x] Random Car Creation
+- [x] Car Management Buttons
+- [x] Pagination (7 cars per page)
+- [x] EXTRA POINTS
+  - [x] Empty Garage handling
+  - [x] Empty Garage Page handling
 
-### `npm run build`
+### Winners View (50 pts)
+- [x] Display Winners
+- [x] Pagination (10 winners per page)
+- [x] Winners Table
+- [x] Sorting Functionality
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Race (170 pts)
+- [x] Start Engine Animation
+- [x] Stop Engine Animation
+- [x] Responsive Animation
+- [x] Start Race Button
+- [x] Reset Race Button
+- [x] Winner Announcement
+- [x] Button States
+- [x] Actions during the race
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prettier and ESLint Configuration (10 pts)
+- [x] Prettier Setup
+- [x] ESLint Configuration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Overall Code Quality (100 pts)
+- [x] Modular Design
+- [x] Function Modularization
+- [x] Code Duplication and Magic Numbers
+- [x] Readability
+- [x] Extra Features (custom hooks, routing, etc.)
