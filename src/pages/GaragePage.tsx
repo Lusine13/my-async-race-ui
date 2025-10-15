@@ -6,6 +6,8 @@ import { Car } from '../types/car';
 import RaceControls from '../components/RaceControls';
 import Pagination from '../components/Pagination';
 import CarForm from '../components/CarForm';
+import { saveWinner, fetchWinners } from '../store/winnersSlice';
+
 import './GaragePage.css';
 
 const GaragePage: React.FC = () => {
@@ -47,11 +49,17 @@ const GaragePage: React.FC = () => {
       carDiv.classList.add('moving');
       carDiv.style.transition = `transform ${time}ms linear`;
       carDiv.style.transform = `translateX(${distance}px)`;
-      
-      carTimers.current[car.id] = setTimeout(() => {
-        carDiv.classList.remove('moving');
-        message.success(`${car.name} finished the race!`);
-        // TODO: Save winner here later
+     
+      carTimers.current[car.id] = setTimeout(async () => {
+      carDiv.classList.remove('moving');
+      message.success(`${car.name} finished the race!`);
+
+      try {
+      await dispatch(saveWinner({ id: car.id, time: time / 1000 })).unwrap();
+      dispatch(fetchWinners({ page: 1, limit: 10, sort: 'wins', order: 'desc' }));
+      } catch (err) {
+        message.error(`Failed to save winner: ${String(err)}`);
+      }
       }, time);
     } catch (err) {
       carDiv.style.transition = '';
@@ -66,6 +74,7 @@ const GaragePage: React.FC = () => {
     if (!carDiv) return;
 
     clearTimeout(carTimers.current[car.id]);
+    
     carDiv.style.transition = '';
     carDiv.style.transform = `translateX(0)`;
     carDiv.classList.remove('moving');

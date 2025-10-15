@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Car } from '../types/car';
 import { GarageState } from '../types/garage';
-import { getCars, createCar, generateRandomCars, updateCar } from '../api/carsApi';
+import { getCars, createCar, updateCar } from '../api/carsApi';
 import { BASE_URL } from '../core/utils/constants';
 
 export const fetchCars = createAsyncThunk('garage/fetchCars', async () => {
